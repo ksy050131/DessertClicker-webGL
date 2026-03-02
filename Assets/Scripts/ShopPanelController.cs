@@ -83,14 +83,15 @@ public class ShopPanelController : MonoBehaviour
     {
         if (isAnimating) return;
 
-        // Ensure overlay is rendered just behind the shop panel
-        int shopSiblingIndex = shopPanel.transform.GetSiblingIndex();
-        backgroundOverlay.transform.SetSiblingIndex(shopSiblingIndex);
+        // Activate overlay first, then ensure correct z-order:
+        // overlay behind → shopPanel on top
         backgroundOverlay.gameObject.SetActive(true);
-
-        // Make sure panel starts at closed position, then activate
-        SetPanelPositionX(closedPositionX);
+        backgroundOverlay.transform.SetAsLastSibling();
         shopPanel.SetActive(true);
+        shopPanel.transform.SetAsLastSibling();
+
+        // Make sure panel starts at closed position
+        SetPanelPositionX(closedPositionX);
         ShowUpgradeTab(); // Default tab
 
         // Slide from right to left (closedPositionX -> openPositionX)

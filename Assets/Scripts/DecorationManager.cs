@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 // ──────────────────────────────────────────────────────────────
@@ -90,6 +91,11 @@ public class DecorationManager : MonoBehaviour
     {
         if (!isPlacing || currentPreview == null) return;
 
+        // New Input System
+        var mouse = Mouse.current;
+        var keyboard = Keyboard.current;
+        if (mouse == null) return;
+
         // Follow mouse
         Camera cam = placementCamera != null ? placementCamera : Camera.main;
         if (cam == null)
@@ -99,17 +105,18 @@ public class DecorationManager : MonoBehaviour
             return;
         }
 
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorld = cam.ScreenToWorldPoint(mouse.position.ReadValue());
         mouseWorld.z = placementZ;
         currentPreview.transform.position = mouseWorld;
 
         // Left-click → confirm placement
-        if (Input.GetMouseButtonDown(0))
+        if (mouse.leftButton.wasPressedThisFrame)
         {
             ConfirmPlacement();
         }
         // Right-click or ESC → cancel
-        else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+        else if (mouse.rightButton.wasPressedThisFrame ||
+                 (keyboard != null && keyboard.escapeKey.wasPressedThisFrame))
         {
             CancelPlacing();
         }

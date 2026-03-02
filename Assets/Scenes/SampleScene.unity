@@ -969,15 +969,15 @@ MonoBehaviour:
   - itemId: sticker01
     displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 1"
     cost: 15
-    placementPrefab: {fileID: 0}
+    placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
   - itemId: sticker02
     displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 2"
     cost: 20
-    placementPrefab: {fileID: 0}
+    placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
   - itemId: sticker03
     displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 3"
     cost: 25
-    placementPrefab: {fileID: 0}
+    placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
   decoItemPrefab: {fileID: 6018068656757718653, guid: 170fca5a73357934cb88062afec231c8, type: 3}
   decoContentParent: {fileID: 840240301}
   koreanFont: {fileID: 11400000, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}

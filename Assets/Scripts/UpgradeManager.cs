@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -231,10 +232,14 @@ public class UpgradeManager : MonoBehaviour
             return;
         }
 
-        foreach (var def in clickUpgrades)
-            SpawnSlot(def);
+        // Combine both lists and sort them by current cost
+        var combinedUpgrades = new List<UpgradeDefinition>();
+        combinedUpgrades.AddRange(clickUpgrades);
+        combinedUpgrades.AddRange(autoUpgrades);
 
-        foreach (var def in autoUpgrades)
+        var sortedUpgrades = combinedUpgrades.OrderBy(u => u.GetCurrentCost()).ToList();
+
+        foreach (var def in sortedUpgrades)
             SpawnSlot(def);
     }
 

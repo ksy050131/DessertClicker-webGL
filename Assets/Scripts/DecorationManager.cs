@@ -248,18 +248,14 @@ public class DecorationManager : MonoBehaviour
         }
 
         // Resolve child references from the DecoItem prefab structure
-        Transform vw = go.transform.Find("VerticalWrapper");
-        if (vw != null)
+        Transform hw = go.transform.Find("HorizontalWrapper");
+        if (hw != null)
         {
-            Transform hw = vw.Find("HorizontalWrapper");
-            if (hw != null)
-            {
-                Transform nameT = hw.Find("DecoName");
-                if (nameT != null) binding.nameText = nameT.GetComponent<TextMeshProUGUI>();
+            Transform nameT = hw.Find("DecoName");
+            if (nameT != null) binding.nameText = nameT.GetComponent<TextMeshProUGUI>();
 
-                Transform costT = hw.Find("Cost");
-                if (costT != null) binding.costText = costT.GetComponent<TextMeshProUGUI>();
-            }
+            Transform costT = hw.Find("Cost");
+            if (costT != null) binding.costText = costT.GetComponent<TextMeshProUGUI>();
         }
 
         Transform buyT = go.transform.Find("BuyButton");

@@ -43,6 +43,19 @@ public class SweetPointManager : MonoBehaviour
         UpdateUI();
     }
 
+    /// <summary>
+    /// WebGL에서 SendMessage로 호출될 함수입니다.
+    /// javascript 쪽에선 SendMessage("오브젝트이름", "AddCoinFromWeb", 100); 형태로 호출합니다.
+    /// </summary>
+    public void AddCoinFromWeb(int amount)
+    {
+        if (amount <= 0) return;
+        currentPoints += amount;
+        Debug.Log("Web signal received: " + amount);
+        OnPointsChanged?.Invoke(currentPoints);
+        UpdateUI();
+    }
+
     /// <summary>Try to spend points. Returns true if successful.</summary>
     public bool TrySpend(int amount)
     {

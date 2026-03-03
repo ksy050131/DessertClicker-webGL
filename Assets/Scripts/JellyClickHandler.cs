@@ -35,9 +35,18 @@ public class JellyClickHandler : MonoBehaviour
 
         // Use UpgradeManager for points-per-click; fallback to 1
         int points = 1;
+        bool isCritical = false;
+
         if (UpgradeManager.Instance != null)
-            points = UpgradeManager.Instance.GetPointsPerClick();
+        {
+            points = UpgradeManager.Instance.CalculateClickPoints(out isCritical);
+        }
 
         SweetPointManager.Instance.AddPoints(points);
+
+        if (isCritical)
+        {
+            Debug.Log($"[Critical Hit!] Earned {points} Sweet Points!");
+        }
     }
 }

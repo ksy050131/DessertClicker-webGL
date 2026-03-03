@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 70baac1a4ba446f438d6d0b209bf9a2c
+guid: 78658811fb553fd47b7a6f8669c0001d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1086197501266087201
-    second: Jelly_0
+      213: 1075993247170539406
+    second: cat_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jelly_0
+      name: cat_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 8
-        width: 44
-        height: 47
+        x: 0
+        y: 1
+        width: 29
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd23e15a02d0de0f0800000000000000
-      internalID: -1086197501266087201
+      spriteID: e8fa15e4822beee00800000000000000
+      internalID: 1075993247170539406
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jelly_0: -1086197501266087201
+      cat_0: 1075993247170539406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

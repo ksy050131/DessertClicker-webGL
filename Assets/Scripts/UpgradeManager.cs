@@ -19,6 +19,13 @@ public class UpgradeDefinition
     public float costMultiplier = 1.15f;
     [Tooltip("Value added per level (points-per-click or auto-per-second)")]
     public float valuePerLevel = 1f;
+
+    [Header("Critical Hit (Optional)")]
+    [Tooltip("If true, valuePerLevel is added to baseCriticalChance per level. (e.g., 0.01 = 1%)")]
+    public bool isCriticalUpgrade = false;
+    public float baseCriticalChance = 0.05f; // 5%
+    public int criticalMultiplier = 10;
+
     [HideInInspector] public int currentLevel;
 
     /// <summary>Current cost rounded to int.</summary>
@@ -125,14 +132,36 @@ public class UpgradeManager : MonoBehaviour
 
     // ─── Public API ───────────────────────────────────────────
 
-    /// <summary>Total points earned per click (base + upgrade sum).</summary>
-    public int GetPointsPerClick()
+    /// <summary>Total points earned per click (base + upgrade sum). Also calculates if it was a critical hit.</summary>
+    public int CalculateClickPoints(out bool isCritical)
     {
+        isCritical = false;
         float bonus = 0f;
-        foreach (var def in clickUpgrades)
-            bonus += def.GetTotalValue();
+        float critChance = 0f;
+        int critMult = 1;
 
-        return basePointsPerClick + Mathf.RoundToInt(bonus);
+        foreach (var def in clickUpgrades)
+        {
+            if (def.isCriticalUpgrade && def.currentLevel > 0)
+            {
+                critChance += def.baseCriticalChance + ((def.currentLevel - 1) * def.valuePerLevel);
+                critMult = Mathf.Max(critMult, def.criticalMultiplier);
+            }
+            else if (!def.isCriticalUpgrade)
+            {
+                bonus += def.GetTotalValue();
+            }
+        }
+
+        int totalClick = basePointsPerClick + Mathf.RoundToInt(bonus);
+
+        if (critChance > 0f && UnityEngine.Random.value <= critChance)
+        {
+            isCritical = true;
+            totalClick *= critMult;
+        }
+
+        return totalClick;
     }
 
     /// <summary>Total auto-points per second from all auto upgrades.</summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -16,6 +17,8 @@ public class PlaceableItemDefinition
     public int cost = 15;
     [Tooltip("Prefab to instantiate for world placement")]
     public GameObject placementPrefab;
+    [Tooltip("Sprite shown in the DecoImage area of the shop slot")]
+    public Sprite decoSprite;
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -219,7 +222,10 @@ public class DecorationManager : MonoBehaviour
             return;
         }
 
-        foreach (var def in placeableItems)
+        // Sort by cost ascending so cheapest items appear first
+        var sorted = placeableItems.OrderBy(d => d.cost).ToList();
+
+        foreach (var def in sorted)
             SpawnSlot(def);
     }
 
@@ -228,6 +234,18 @@ public class DecorationManager : MonoBehaviour
         GameObject go = Instantiate(decoItemPrefab, decoContentParent);
 
         var binding = new DecoSlotBinding { def = def };
+
+        // Set DecoImage sprite if available
+        Transform decoImgT = go.transform.Find("DecoImage");
+        if (decoImgT != null && def.decoSprite != null)
+        {
+            Image decoImg = decoImgT.GetComponent<Image>();
+            if (decoImg != null)
+            {
+                decoImg.sprite = def.decoSprite;
+                decoImg.preserveAspect = true;
+            }
+        }
 
         // Resolve child references from the DecoItem prefab structure
         Transform vw = go.transform.Find("VerticalWrapper");

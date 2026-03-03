@@ -157,10 +157,10 @@ RectTransform:
   - {fileID: 1276241428}
   m_Father: {fileID: 1746312543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -88}
-  m_SizeDelta: {x: -60, y: 80}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -12, y: -91}
+  m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6780288
 MonoBehaviour:
@@ -175,16 +175,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
-    m_Left: 50
-    m_Right: 50
-    m_Top: 10
-    m_Bottom: 10
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 30
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.65471697, b: 0.7326587, a: 1}
+  m_Color: {r: 0.9490197, g: 0.69411767, b: 0.76470596, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -316,8 +316,33 @@ MonoBehaviour:
     baseCost: 10
     costMultiplier: 1.15
     valuePerLevel: 1
+    isCriticalUpgrade: 0
+    baseCriticalChance: 0.05
+    criticalMultiplier: 10
     currentLevel: 0
-  autoUpgrades: []
+  - id: filling_burst
+    displayName: "\uC0C1\uD07C\uD55C \uD544\uB9C1\uC774 \uD321\uD321"
+    description: "\uC824\uB9AC\uB97C \uD074\uB9AD\uD560 \uB54C 5% \uD655\uB960\uB85C
+      \uD55C \uBC88\uC5D0 10\uBC30\uC758 \uCF54\uC778\uC744 \uC5BB\uC2B5\uB2C8\uB2E4."
+    baseCost: 100
+    costMultiplier: 1.15
+    valuePerLevel: 0.01
+    isCriticalUpgrade: 1
+    baseCriticalChance: 0.05
+    criticalMultiplier: 10
+    currentLevel: 0
+  autoUpgrades:
+  - id: auto_syrup_drop
+    displayName: "\uB611\uB531\uB611\uB531 \uC2DC\uB7FD \uBC29\uC6B8"
+    description: "1\uCD08\uB9C8\uB2E4 \uC790\uB3D9\uC73C\uB85C 1 \uCF54\uC778\uC744
+      \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    baseCost: 50
+    costMultiplier: 1.15
+    valuePerLevel: 1
+    isCriticalUpgrade: 0
+    baseCriticalChance: 0
+    criticalMultiplier: 0
+    currentLevel: 0
   upgradeItemPrefab: {fileID: 461750096612770759, guid: 47cbbf8e4966caa46acbbb2cdb4b6157, type: 3}
   upgradeContentParent: {fileID: 593637433}
   koreanFont: {fileID: 11400000, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
@@ -371,10 +396,10 @@ RectTransform:
   - {fileID: 1260169827}
   m_Father: {fileID: 6780287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161, y: -40}
-  m_SizeDelta: {x: 222, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152379202
 MonoBehaviour:
@@ -440,8 +465,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -4170080985144684059, guid: 0127e3ab351c73c46bc2b1516dcef969, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -810,7 +835,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00012207031}
-  m_SizeDelta: {x: 0, y: -897}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &593637434
 MonoBehaviour:
@@ -966,18 +991,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorationManager
   placeableItems:
-  - itemId: sticker01
-    displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 1"
+  - itemId: sticker_jelly
+    displayName: Jelly
     cost: 15
     placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
-  - itemId: sticker02
-    displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 2"
+    decoSprite: {fileID: 21300000, guid: 70baac1a4ba446f438d6d0b209bf9a2c, type: 3}
+  - itemId: sticker_candy
+    displayName: Candy
     cost: 20
-    placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
-  - itemId: sticker03
-    displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD2F0\uCEE4 3"
-    cost: 25
-    placementPrefab: {fileID: 7054773056467553364, guid: e29fef3306ad1b64aa7e3e15f2e9f9b9, type: 3}
+    placementPrefab: {fileID: 6353516171826659091, guid: dd9b964a1be66d542a7f7f81c25cd3d3, type: 3}
+    decoSprite: {fileID: 21300000, guid: 37ef6af3b8d258642a1d3f95083234b5, type: 3}
+  - itemId: sticker_cat
+    displayName: Cat
+    cost: 30
+    placementPrefab: {fileID: 6353516171826659091, guid: a70a1fbe5cd0d1e4ba90130d41e6015b, type: 3}
+    decoSprite: {fileID: 21300000, guid: 78658811fb553fd47b7a6f8669c0001d, type: 3}
   decoItemPrefab: {fileID: 6018068656757718653, guid: 170fca5a73357934cb88062afec231c8, type: 3}
   decoContentParent: {fileID: 840240301}
   koreanFont: {fileID: 11400000, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
@@ -1561,10 +1589,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Upgrade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
+  m_sharedMaterial: {fileID: -5678234363642589218, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1594,7 +1622,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1674,10 +1702,10 @@ RectTransform:
   - {fileID: 1450958877}
   m_Father: {fileID: 6780287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 413, y: -40}
-  m_SizeDelta: {x: 222, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276241429
 MonoBehaviour:
@@ -1743,8 +1771,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -8508263317804952240, guid: 45ccc9ecb8037b24eb6eed7adc490b0c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1818,10 +1846,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Deco
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
+  m_sharedMaterial: {fileID: -5678234363642589218, guid: 98499a0fe3d4a874ca90001a0247a2a6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1851,7 +1879,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2034,7 +2062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1746312543
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2336,7 +2364,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -94}
-  m_SizeDelta: {x: 330, y: 330}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1973482937
 MonoBehaviour:
@@ -2402,7 +2430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1086197501266087201, guid: 70baac1a4ba446f438d6d0b209bf9a2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70baac1a4ba446f438d6d0b209bf9a2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

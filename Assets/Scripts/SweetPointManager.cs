@@ -56,6 +56,6 @@ public class SweetPointManager : MonoBehaviour
     private void UpdateUI()
     {
         if (scoreText != null)
-            scoreText.text = $"Sweet Points {currentPoints}";
+            scoreText.text = $"{currentPoints} Sweet Points";
     }
 }

@@ -94,12 +94,12 @@ public class DecorationManager : MonoBehaviour
     {
         if (!isPlacing || currentPreview == null) return;
 
-        // New Input System
-        var mouse = Mouse.current;
+        // New Input System: Use Pointer instead of Mouse for cross-platform (Touch/Pen/Mouse)
+        var pointer = Pointer.current;
         var keyboard = Keyboard.current;
-        if (mouse == null) return;
+        
+        if (pointer == null) return;
 
-        // Follow mouse
         Camera cam = placementCamera != null ? placementCamera : Camera.main;
         if (cam == null)
         {
@@ -108,20 +108,46 @@ public class DecorationManager : MonoBehaviour
             return;
         }
 
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(mouse.position.ReadValue());
-        mouseWorld.z = placementZ;
-        currentPreview.transform.position = mouseWorld;
+        // 1. Follow pointer (Mouse hover OR Touch drag)
+        Vector3 worldPos = cam.ScreenToWorldPoint(pointer.position.ReadValue());
+        worldPos.z = placementZ;
+        currentPreview.transform.position = worldPos;
 
-        // Left-click → confirm placement
-        if (mouse.leftButton.wasPressedThisFrame)
+        // 2. Mobile Touch Logic: Place on finger release, cancel on multi-touch
+        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
         {
-            ConfirmPlacement();
+            var activeTouch = Touchscreen.current.primaryTouch;
+            
+            // If they lift their finger from the screen -> Confirm Placement
+            if (activeTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended ||
+                activeTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
+            {
+                ConfirmPlacement();
+                return;
+            }
+            // Cancel if they use a second finger
+            if (Touchscreen.current.touches.Count > 1)
+            {
+                CancelPlacing();
+                return;
+            }
         }
-        // Right-click or ESC → cancel
-        else if (mouse.rightButton.wasPressedThisFrame ||
-                 (keyboard != null && keyboard.escapeKey.wasPressedThisFrame))
+        // 3. Desktop Mouse Logic: Left click to place, Right click/Esc to cancel
+        else
         {
-            CancelPlacing();
+            var mouse = Mouse.current;
+            if (mouse != null)
+            {
+                if (mouse.leftButton.wasPressedThisFrame)
+                {
+                    ConfirmPlacement();
+                }
+                else if (mouse.rightButton.wasPressedThisFrame ||
+                         (keyboard != null && keyboard.escapeKey.wasPressedThisFrame))
+                {
+                    CancelPlacing();
+                }
+            }
         }
     }
 
